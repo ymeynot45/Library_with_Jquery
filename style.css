@@ -1,0 +1,46 @@
+#firstShelf{
+    background-color: orange; 
+ }
+ 
+ #shelf{
+     z-index: 2;
+ }
+ 
+ #newBookEntry{
+     background-color: greenyellow;
+ }
+ 
+ .bookSlot{
+     background-color: blue;
+     text-align: right;
+ }
+ 
+ .readButton{
+     display: inline-block;
+ }
+ 
+ #newBookForm{
+     background-color: yellowgreen;
+ }
+ 
+ .headerButtons{
+     align-content: center;
+     z-index: 1;
+     
+ }
+ 
+ #TitleButton{
+     background-color: lightgrey;
+ }
+ 
+ #AuthorButton{
+     background-color: lightgrey;
+ }
+ 
+ #PagesButton{
+     background-color: lightgrey;
+ }
+ 
+ #Have_ReadButton{
+     background-color: lightgrey;
+ }
