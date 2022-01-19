@@ -297,5 +297,7 @@ const loadPage = function() {
     addBookForm();
 }
 
-
-document.body.addEventListener("load", loadPage());
+$(document).ready(function(){
+    loadPage();
+});
+// document.body.addEventListener("load", loadPage());
