@@ -272,11 +272,20 @@ const handleSubmit = function(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
         const formProps = Object.fromEntries(formData);
-        book = new Book(formProps.title, formProps.author, formProps.pageNumber, formProps.haveRead)
+        console.log(formProps);
+        book = new Book(formProps.title, formProps.author, formProps.pageNumber, handleCheckbox(formProps))
         addBookToLibrary(myLibrary, book);
         postBookToLibrary(book);
         clearForm();
         return false;
+}
+
+const handleCheckbox = function(formProps){
+    if(formProps.haveRead === 'true'){
+        return true
+    } else{
+        return false
+    }
 }
 
 const clearForm = function(){
