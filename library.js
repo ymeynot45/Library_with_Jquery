@@ -153,17 +153,12 @@ const toggleHaveRead = function(id, bookSlot) {  // I have to refactor this badl
 const addBookForm = function () {
     frame = document.getElementById("newBookEntry")  // frame name
     
-    // let createForm = $('<form>', {
-    //     "id": "newBookForm",
-    //     "action": handleSubmit,
-    // }).appendTo(document.body).submit();
-
-    let createForm = document.createElement('form');
-    createForm.setAttribute("method", "post");
-    createForm.setAttribute("action", "");
-    createForm.setAttribute("id", "newBookForm");  //form name
-    frame.appendChild(createForm);
-
+    // let createForm = document.createElement('form');
+    // createForm.setAttribute("method", "post");
+    // createForm.setAttribute("action", "");
+    // createForm.setAttribute("id", "newBookForm");  //form name
+    let createForm = ($("<form action='' method='post' id='newBookForm'>"))
+    $(frame).append(createForm);
 
     // let heading = document.createElement('h4');
     // heading.innerHTML = "Add new book ";
@@ -257,12 +252,13 @@ const addBookForm = function () {
     $(createForm).append($("<br></br>"));
 
 
-    let submitElement = document.createElement('input'); // Append Submit Button
-    submitElement.setAttribute("id", "newBookSubmitButton");
-    submitElement.setAttribute("type", "submit");
-    submitElement.setAttribute("name", "newBookSubmit");
-    submitElement.setAttribute("value", "Submit");
-    createForm.appendChild(submitElement);  
+    // let submitElement = document.createElement('input'); // Append Submit Button
+    // submitElement.setAttribute("id", "newBookSubmitButton");
+    // submitElement.setAttribute("type", "submit");
+    // submitElement.setAttribute("name", "newBookSubmit");
+    // submitElement.setAttribute("value", "Submit");
+    // createForm.appendChild(submitElement);  
+    $(createForm).append($("<input type='submit' id='newBookSubmitButton' name='newBookSubmit' value='Submit'>"));
 
     newBookForm.addEventListener ("submit", handleSubmit);
     // $("#newBookEntry").appendChild(createForm, heading); // frame name
