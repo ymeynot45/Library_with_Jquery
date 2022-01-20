@@ -15,20 +15,25 @@ const bookInfo = function(book) {
 const setupTitleButtons = function() {
     const headers = ["Title", "Author", "Pages", "Have_Read"]
     let firstShelf = document.getElementById("firstShelf");
-    let secondShelf = document.createElement("div");
-    secondShelf.setAttribute("id", "secondShelf");
-    firstShelf.appendChild(secondShelf);
+    $(firstShelf).append("<div id='secondShelf'></div>")
+    // let secondShelf = document.createElement("div");
+    // secondShelf.setAttribute("id", "secondShelf");
+    // firstShelf.appendChild(secondShelf);
     headers.forEach(createHeaderButton);
 }
 
 const createHeaderButton = function(keyWord){
     let frame = document.getElementById("secondShelf");
-    let button = document.createElement("button");
-    button.setAttribute("class", "headerButtons");
-    button.setAttribute("id", `${keyWord}Button`);
-    button.textContent = keyWord;
-    frame.appendChild(button);
-    button.addEventListener ("click", 
+    let button = "<input type='button' id="+`${keyWord}Button ` + `value=${keyWord}>`;
+    $(frame).append(button);
+    // let button = document.createElement("button");
+    // button.setAttribute("class", "headerButtons");
+    // button.setAttribute("id", `${keyWord}Button`);
+    // button.textContent = keyWord;
+    // frame.appendChild(button);
+    console.log(button);
+    console.log(`${keyWord}Button`);
+    document.getElementById(`${keyWord}Button`).addEventListener ("click", 
     function() {
         sortLibrary(keyWord);
     });
