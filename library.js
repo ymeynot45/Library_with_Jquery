@@ -153,87 +153,108 @@ const toggleHaveRead = function(id, bookSlot) {  // I have to refactor this badl
 const addBookForm = function () {
     frame = document.getElementById("newBookEntry")  // frame name
     
-    let createform = document.createElement('form');
-    createform.setAttribute("action", "");
-    createform.setAttribute("method", "post");
-    createform.setAttribute("id", "newBookForm");  //form name
-    frame.appendChild(createform);
+    // let createForm = $('<form>', {
+    //     "id": "newBookForm",
+    //     "action": handleSubmit,
+    // }).appendTo(document.body).submit();
 
-    let heading = document.createElement('h4');
-    heading.innerHTML = "Add new book ";
-    createform.appendChild(heading);
+    let createForm = document.createElement('form');
+    createForm.setAttribute("method", "post");
+    createForm.setAttribute("action", "");
+    createForm.setAttribute("id", "newBookForm");  //form name
+    frame.appendChild(createForm);
 
-    let line = document.createElement('hr'); 
-    createform.appendChild(line);
 
-    let linebreak = document.createElement('br');
-    createform.appendChild(linebreak);
+    // let heading = document.createElement('h4');
+    // heading.innerHTML = "Add new book ";
+    $(createForm).append($("<h4></h4>").text("Add New Book"));
 
-    let newBookTitle = document.createElement('newBookTitle'); 
-    newBookTitle.innerHTML = "New Book Title : "; 
-    createform.appendChild(newBookTitle);
+    // let line = document.createElement('hr'); 
+    // createForm.appendChild(line);
+    $(createForm).append($("<hr>"));
 
-    let newTitleElement = document.createElement('input');
-    newTitleElement.setAttribute("id", "newTitle"); 
-    newTitleElement.setAttribute("type", "text");
-    newTitleElement.setAttribute("name", "title");
-    createform.appendChild(newTitleElement);
+    // let linebreak = document.createElement('br');
+    // createForm.appendChild(linebreak);
+    $(createForm).append($("<br></br>"));
 
-    let newTitleBreak = document.createElement('br');
-    createform.appendChild(newTitleBreak);
+    // let newBookTitle = document.createElement('newBookTitle'); 
+    // newBookTitle.innerHTML = "New Book Title : "; 
+    // createForm.appendChild(newBookTitle);
+    $(createForm).append("New Book Title : ");
 
-    let authorLable = document.createElement('label'); 
-    authorLable.innerHTML = "Who is the author: ";
-    createform.appendChild(authorLable);
+    // let newTitleElement = document.createElement('input');
+    // newTitleElement.setAttribute("id", "newTitle"); 
+    // newTitleElement.setAttribute("type", "text");
+    // newTitleElement.setAttribute("name", "title");
+    // createForm.appendChild(newTitleElement);
+    $(createForm).append($("<input type='text' id='newTitle' name='title'>"));
 
-    let newAuthorElement = document.createElement('input');
-    newAuthorElement.setAttribute("type", "text");
-    newAuthorElement.setAttribute("name", "author");
-    createform.appendChild(newAuthorElement);
+    // let newTitleBreak = document.createElement('br');
+    // createForm.appendChild(newTitleBreak);
+    $(createForm).append($('<br />'));
 
-    let newAuthorBreak = document.createElement('br');
-    createform.appendChild(newAuthorBreak);
+    // let authorLable = document.createElement('label'); 
+    // authorLable.innerHTML = "Who is the author: ";
+    // createForm.appendChild(authorLable);
+    $(createForm).append("Who is the author: ");
 
-    let newPageCountLabel = document.createElement('label');
-    newPageCountLabel.innerHTML = "Total Pages : ";
-    createform.appendChild(newPageCountLabel);
+    // let newAuthorElement = document.createElement('input');
+    // newAuthorElement.setAttribute("type", "text");
+    // newAuthorElement.setAttribute("name", "author");
+    // createForm.appendChild(newAuthorElement);
+    $(createForm).append($("<input type='text' id= 'newAuthor' name='author'>"));
 
-    let newPageCountElement = document.createElement('input');
-    newPageCountElement.setAttribute("type", "number");
-    newPageCountElement.setAttribute("name", "pageNumber");
-    createform.appendChild(newPageCountElement);
+    // let newAuthorBreak = document.createElement('br');
+    // createForm.appendChild(newAuthorBreak);
+    $(createForm).append($("<br></br>"));
 
-    let newPageCountBreak = document.createElement('br');
-    createform.appendChild(newPageCountBreak);
+    // let newPageCountLabel = document.createElement('label');
+    // newPageCountLabel.innerHTML = "Total Pages : ";
+    // createForm.appendChild(newPageCountLabel);
+    $(createForm).append("Total Pages: ");
 
-    let haveReadLabel = document.createElement('label');
-    haveReadLabel.innerHTML = "I Have Read This Book : ";
-    createform.appendChild(haveReadLabel);
+    // let newPageCountElement = document.createElement('input');
+    // newPageCountElement.setAttribute("type", "number");
+    // newPageCountElement.setAttribute("name", "pageNumber");
+    // createForm.appendChild(newPageCountElement);
+    $(createForm).append($("<input type='number' name='pageNumber'>"));
 
-    let haveReadElementFalse = document.createElement("input");
-    haveReadElementFalse.setAttribute("id", "haveReadRadioFalse");
-    haveReadElementFalse.setAttribute("name", "haveRead");
-    haveReadElementFalse.setAttribute("type", "radio");
-    haveReadElementFalse.setAttribute("value", false);
-    haveReadElementFalse.setAttribute("checked", "checked");
-    let radioFalseLable = document.createElement('label');
-    radioFalseLable.innerHTML = "False   "
 
-    let haveReadElementTrue = document.createElement("input");
-    haveReadElementTrue.setAttribute("id", "haveReadRadioTrue");
-    haveReadElementTrue.setAttribute("name", "haveRead");
-    haveReadElementTrue.setAttribute("type", "radio");
-    haveReadElementTrue.setAttribute("value", true);
-    let radioTrueLable = document.createElement('label');
-    radioTrueLable.innerHTML = "True"
+    // let newPageCountBreak = document.createElement('br');
+    // createForm.appendChild(newPageCountBreak);
+    $(createForm).append($("<br></br>"));
 
-    createform.appendChild(haveReadElementFalse);
-    createform.appendChild(radioFalseLable);
-    createform.appendChild(haveReadElementTrue);
-    createform.appendChild(radioTrueLable);
+    // let haveReadLabel = document.createElement('label');
+    // haveReadLabel.innerHTML = "I Have Read This Book : ";
+    // createForm.appendChild(haveReadLabel);
+    $(createForm).append("I Have Read This Book : ")
 
-    let haveReadBreak = document.createElement('br');
-    createform.appendChild(haveReadBreak);
+    // let haveReadElementFalse = document.createElement("input");
+    // haveReadElementFalse.setAttribute("id", "haveReadRadioFalse");
+    // haveReadElementFalse.setAttribute("name", "haveRead");
+    // haveReadElementFalse.setAttribute("type", "radio");
+    // haveReadElementFalse.setAttribute("value", false);
+    // haveReadElementFalse.setAttribute("checked", "checked");
+    // let radioFalseLable = document.createElement('label');
+    // radioFalseLable.innerHTML = "False   "
+    $(createForm).append($("<input id='haveReadFalse' name='haveRead' type='checkbox' value=true><label for='haveReadRadioFalse'>Finished</label>"));
+
+    // let haveReadElementTrue = document.createElement("input");
+    // haveReadElementTrue.setAttribute("id", "haveReadRadioTrue");
+    // haveReadElementTrue.setAttribute("name", "haveRead");
+    // haveReadElementTrue.setAttribute("type", "radio");
+    // haveReadElementTrue.setAttribute("value", true);
+    // let radioTrueLable = document.createElement('label');
+    // radioTrueLable.innerHTML = "True"
+
+    // createForm.appendChild(haveReadElementFalse);
+    // createForm.appendChild(radioFalseLable);
+    // createForm.appendChild(haveReadElementTrue);
+    // createForm.appendChild(radioTrueLable);
+
+    // let haveReadBreak = document.createElement('br');
+    // createForm.appendChild(haveReadBreak);
+    $(createForm).append($("<br></br>"));
 
 
     let submitElement = document.createElement('input'); // Append Submit Button
@@ -241,19 +262,21 @@ const addBookForm = function () {
     submitElement.setAttribute("type", "submit");
     submitElement.setAttribute("name", "newBookSubmit");
     submitElement.setAttribute("value", "Submit");
-    createform.appendChild(submitElement);
+    createForm.appendChild(submitElement);  
 
     newBookForm.addEventListener ("submit", handleSubmit);
+    // $("#newBookEntry").appendChild(createForm, heading); // frame name
 }
 
-const handleSubmit = function(e) {
-        e.preventDefault();
-        const formData = new FormData(e.target);
+const handleSubmit = function(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
         const formProps = Object.fromEntries(formData);
         book = new Book(formProps.title, formProps.author, formProps.pageNumber, formProps.haveRead)
         addBookToLibrary(myLibrary, book);
         postBookToLibrary(book);
         clearForm();
+        return false;
 }
 
 const clearForm = function(){
@@ -298,6 +321,6 @@ const loadPage = function() {
 }
 
 $(document).ready(function(){
-    loadPage();
+    loadPage(); 
 });
 // document.body.addEventListener("load", loadPage());
