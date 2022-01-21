@@ -9,6 +9,7 @@ const Book = function (title, author, pageNumber, haveRead) {
 }
 
 const bookInfo = function(book) {
+    console.log(book);
     return `${book.title} - ${book.author} - ${book.pageNumber} - ${book.haveRead}   `
 }
 
@@ -24,22 +25,20 @@ const setupTitleButtons = function() {
 
 const createHeaderButton = function(keyWord){
     let frame = document.getElementById("secondShelf");
-    let button = "<input type='button' id="+`${keyWord}Button ` + `value=${keyWord}>`;
+    let button = `<input type='button' id=${keyWord}Button value=${keyWord}>`;
     $(frame).append(button);
     // let button = document.createElement("button");
     // button.setAttribute("class", "headerButtons");
     // button.setAttribute("id", `${keyWord}Button`);
     // button.textContent = keyWord;
     // frame.appendChild(button);
-    console.log(button);
-    console.log(`${keyWord}Button`);
     document.getElementById(`${keyWord}Button`).addEventListener ("click", 
     function() {
         sortLibrary(keyWord);
     });
 }
 
-const sortLibrary = (keyWord) => {  //not currently working
+const sortLibrary = (keyWord) => {
     document.getElementById("thirdShelf").remove();
     let library = myLibrary;
     if(keyWord === "Title"){
@@ -53,7 +52,6 @@ const sortLibrary = (keyWord) => {  //not currently working
     }else{
         alert("Sorting Error, unrecognized keyWord");
     }
-    // let sortedLibrary = library.sort((kw1, kw2) => (kw1.title < kw2.title) ? 1 : (kW1.title > kw2.title) ? -1: 0);
     loadLibrary(library);
 }
 
@@ -109,14 +107,18 @@ const compareHave_Read = function(a, b){
     return comparison;
 }
 
-const createBookSlot = function(book) {
-    let bookSlot = document.createElement("li");
-    bookSlot.setAttribute("class", "bookSlot");
-    bookSlot.setAttribute("id", book.id);
-    bookSlot.textContent = bookInfo(book);
-    addReadButton(bookSlot);
+const createBookSlot = function(book) {  // Broken
+    textContent = bookInfo(book)
+    console.log(textContent);
+    let bookSlot = $(`<li class="bookSlot" id=${book.id}>${textContent}</li>`);
+    console.log(bookSlot);
+    // let bookSlot = document.createElement("li");
+    // bookSlot.setAttribute("class", "bookSlot");
+    // bookSlot.setAttribute("id", book.id);
+    // bookSlot.textContent = bookInfo(book);
+    // addReadButton(bookSlot);
     frame = document.getElementById("thirdShelf");
-    frame.appendChild(bookSlot);
+    $(frame).append(bookSlot);
 }
 
 const loadLibrary = function(library) {
@@ -132,7 +134,7 @@ const addReadButton = function(location) { // I know I should break this up into
     let button = document.createElement("button");
     button.setAttribute("class", "readButton");
     button.innerHTML = "Finished Book?"
-    location.appendChild(button);
+    location.append(button);
     button.addEventListener ("click", 
         function() {
             toggleHaveRead(parseInt(location.id), location);
@@ -265,7 +267,7 @@ const addBookForm = function () {
     // createForm.appendChild(submitElement);  
     $(createForm).append($("<input type='submit' id='newBookSubmitButton' name='newBookSubmit' value='Submit'>"));
 
-    newBookForm.addEventListener ("submit", handleSubmit);
+    newBookForm.addEventListener ("submit", handleSubmit);  //I don't know why this works (search newBookForm it shouldn't connect.)
     // $("#newBookEntry").appendChild(createForm, heading); // frame name
 }
 
@@ -273,7 +275,6 @@ const handleSubmit = function(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
         const formProps = Object.fromEntries(formData);
-        console.log(formProps);
         book = new Book(formProps.title, formProps.author, formProps.pageNumber, handleCheckbox(formProps))
         addBookToLibrary(myLibrary, book);
         postBookToLibrary(book);
